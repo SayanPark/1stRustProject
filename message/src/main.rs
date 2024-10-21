@@ -2,6 +2,7 @@ use std::cell::RefCell;
 use std::rc::Rc;
 
 #[derive(Debug)]
+#[allow(dead_code)]
 enum List {
     Cons(i32, RefCell<Rc<List>>),
     Nil,
