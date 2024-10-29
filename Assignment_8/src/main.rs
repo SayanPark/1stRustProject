@@ -1,4 +1,4 @@
-use std::time::{Instant};
+use std::time::Instant;
 
 fn fib_recursive(n: u32) -> u32 {
     if n < 2 {
