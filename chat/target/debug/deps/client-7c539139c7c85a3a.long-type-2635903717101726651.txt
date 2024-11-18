@@ -1,0 +1,1 @@
+futures::future::Select<impl futures::Future<Output = Result<(), Box<(dyn std::error::Error + std::marker::Send + Sync + 'static)>>>, impl futures::Future<Output = Result<(), Box<(dyn std::error::Error + std::marker::Send + Sync + 'static)>>>>
