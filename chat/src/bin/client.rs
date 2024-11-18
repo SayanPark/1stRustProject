@@ -1,10 +1,10 @@
-use async_std::io::BufReader;
+// use async_std::io::BufReader;
 use async_std::prelude::*;
 use async_std::{task, io, net};
 use std::sync::Arc;
 use chat::utils::{self, ChatResult};
 use chat::{Client, Server};
-use futures::future::race;
+use futures_lite::future::FutureExt;
 
 fn get_value(mut input: &str) -> Option<(&str, &str)> {
     input = input.trim_start();
@@ -75,12 +75,15 @@ async fn messages(server: net::TcpStream) -> ChatResult<()> {
 
 fn main() -> ChatResult<()> {
     let addr = std::env::args().nth(1).expect("Address:PORT");
-    task::block_on(async {
+    task::block_on(async{
         let socket = net::TcpStream::connect(addr).await?;
+
         socket.set_nodelay(true)?;
+        
         let send = send(socket.clone());
         let replies = messages(socket);
-        race(replies, send).await?;
+        
+        replies.race(send).await?;
         Ok(())
     })
 }
