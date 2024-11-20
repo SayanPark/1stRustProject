@@ -1,0 +1,21 @@
+@font-face {
+    font-family: 'Springtimeromance';
+    src: local('Ubuntu'),
+        url('fonts/Springtimeromance-lgqqX.woff2') format('woff2');
+}
+
+body {
+    background-color: #282c34;
+    color: grey;
+    font-family: 'Springtimeromance';
+}
+
+.main-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    height: 100vh;
+}
