@@ -20,7 +20,7 @@ impl Leaving{
 }
 
 pub async fn handle(socket: TcpStream, chats: Arc<ChatTracker>) -> ChatResult<()> {
-    let Leaving = Arc::new(Leaving::new(socket.clone()));
+    let leaving = Arc::new(Leaving::new(socket.clone()));
     let buffered = BufReader::new(socket);
     let mut from_client = utils::receive(buffered);
 
